@@ -1,0 +1,4 @@
+- hosts: appserver 
+  tasks:
+  - name: Removing Lynx on App Servers
+    yum: pkg=lynx state=removed update_cache=true

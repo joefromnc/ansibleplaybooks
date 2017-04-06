@@ -1,0 +1,25 @@
+--- # First playbook
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  gather_facts: true
+  vars:
+    playbook_version: 1.0
+  vars_files:
+  - config/copyright.yml
+  - config/webdefault.yml
+  vars_prompt:                                                                      
+    - name: Web_Domain
+      prompt: Web Domain
+  tasks:
+    - name: Installing Lynx Web Browser
+      action: yum name=lynx state=installed update_cache=true
+    - name: Check for Telnet Client
+      action: yum name=telnet state=absent
+    - name: Installing Apache
+      action: yum name=httpd state=installed
+      notify: Restart Apache
+  handlers:
+    - name: Restart Apache
+      action: service name=httpd state=restarted      

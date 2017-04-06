@@ -1,0 +1,39 @@
+--- # Web Server Playbook
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  gather_facts: no
+  vars_prompt:
+  - name: pkg_name
+    prompt: Enter package name
+  tasks:
+  - name: Playbook start time
+    command: /usr/bin/date
+    register: timestamp_start
+  - debug: var=timestamp_start
+  - name: Installing Apache web server
+    action: yum name=httpd state=latest
+    async: 300
+    poll: 3
+    notify: Start HTTPD
+  - name: Starting Apache web server
+    service: name=httpd state=restarted
+  - name: Verifying Apache is running
+    command: systemctl status httpd
+    register: result
+  - debug: var=result
+  - name: Installing client software - telnet
+    yum: pkg=telnet state=latest
+  - name: Installing Lynx browser
+    yum: pkg={{pkg_name}} state=latest
+  - name: Log all packages installed on system
+    command: yum list installed
+    register: installed_result
+  - debug: var=installed_result
+  - name: Playbook end time
+    command: /usr/bin/date
+    register: timestamp_end
+  - debug: var=timestamp_end
+  handlers:
+  - name: Start HTTPD
+    service: name=httpd state=restarted

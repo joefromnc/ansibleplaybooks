@@ -1,0 +1,14 @@
+---
+- hosts: all
+  user: test
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+  - name: Run the update time command once
+    raw: /usr/bin/uptime >> /home/test/uptime.log
+  - name: List the var directory and log it
+    raw: ls -la /var >> /home/test/dir.list
+    register: dir
+  - debug: var=dir
+    run_once: true

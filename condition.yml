@@ -1,0 +1,14 @@
+---
+- hosts: aptserver
+  user: test
+  sudo: yes
+  connection: ssh
+  vars:
+    distro: ubuntu
+  tasks:
+  - name: Install Apache on Debian Distro
+    command: apt-get -y install apache2
+    when: ansible_os_family == "Debian"
+  - name: Install Apache on Redhat Distro    
+    command: yum -y install httpd
+    when: ansible_os_family == "RedHat"

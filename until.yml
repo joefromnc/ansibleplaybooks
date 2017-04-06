@@ -1,0 +1,18 @@
+---
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  tasks:
+  - name: Installing Apache
+    action: yum name=httpd state=installed
+    notify: Restart Web Server
+  - name: Verify Apache is running
+    shell: systemctl status httpd
+    register: result
+    until: result.stdout.find("active (running)") != -1
+    retries: 5
+    delay: 5
+  - debug: var=result
+  handlers:
+  - name: Restart Web Server
+    action: service name=httpd state=restarted
