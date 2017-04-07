@@ -1,0 +1,6 @@
+- name: Installing the Apache Web Server, Lynx Web Browser, and Telnet
+  yum: pkg={{item}}
+  with_items:
+  - http
+  - lynx
+  - telnet

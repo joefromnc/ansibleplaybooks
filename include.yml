@@ -1,2 +1,8 @@
 ---
 - hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+  - include: include_play.yml
