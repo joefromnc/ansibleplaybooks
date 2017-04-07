@@ -1,5 +1,5 @@
 --- # Testing the J2 Template Module
-- hosts: apacheweb:debian
+- hosts: apacheweb:aptserver
   connection: ssh
   user: test
   sudo: yes
@@ -10,4 +10,4 @@
     connectionType: SFTP
   tasks:
     - name: Install the configuration file customized for the system
-      template: 
+      template: src=/home/test/playbooks/files/test.conf.j2 dest=/home/test/test.conf owner=test group=test mode=750 

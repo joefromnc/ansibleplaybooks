@@ -1,0 +1,9 @@
+---
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  tasks:
+  - name: Run list home on web server
+    command: ls /home/test/playbooks >> /home/test/playbooks/dummy.log 
+    delegate_to: 127.0.0.1 
