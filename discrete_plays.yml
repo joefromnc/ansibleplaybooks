@@ -1,0 +1,10 @@
+---
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  tasks:
+  - include: /home/test/playbooks/include/packages/packages.yml
+  - include: /home/test/playbooks/include/commands/commands.yml
+  handlers:
+  - include: /home/test/playbooks/include/handler/handlers.yml

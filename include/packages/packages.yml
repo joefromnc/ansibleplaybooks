@@ -1,6 +1,8 @@
-- name: Installing the Apache Web Server, Lynx Web Browser, and Telnet
+- name: Installing the Lynx Web Browser and Telnet
   yum: pkg={{item}}
   with_items:
-  - http
   - lynx
   - telnet
+- name: Installing Apache Web Server
+  yum: pkg=httpd state=latest
+  notify: Restart HTTPD
