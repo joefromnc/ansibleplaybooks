@@ -1,0 +1,71 @@
+---
+- hosts: all
+  sudo: yes
+  user: test
+  tasks:
+  - name: Creating Roles directory
+    file: path=/home/test/playbooks/roles state=directory 
+  - name: Creating App Servers directory
+    file: path=/home/test/playbooks/roles/appservers state=directory
+  - name: Creating default directory
+    file: path=/home/test/playbooks/roles/appservers/defaults state=directory
+  - name: Creating files directory
+    file: path=/home/test/playbooks/roles/appservers/files state=directory
+  - name: Creating handlers directory
+    file: path=/home/test/playbooks/roles/appservers/handlers state=directory
+  - name: Creating meta directory
+    file: path=/home/test/playbooks/roles/appservers/meta state=directory
+  - name: Creating tasks directory
+    file: path=/home/test/playbooks/roles/appservers/tasks state=directory
+  - name: Creating templates directory
+    file: path=/home/test/playbooks/roles/appservers/templates state=directory
+  - name: Creating vars directory
+    file: path=/home/test/playbooks/roles/appservers/vars state=directory
+  - name: Creating Caching Servers directory
+    file: path=/home/test/playbooks/roles/cachingservers state=directory
+  - name: Creating default directory
+    file: path=/home/test/playbooks/roles/cachingservers/defaults state=directory
+  - name: Creating files directory
+    file: path=/home/test/playbooks/roles/cachingservers/files state=directory
+  - name: Creating handlers directory
+    file: path=/home/test/playbooks/roles/cachingservers/handlers state=directory
+  - name: Creating meta directory
+    file: path=/home/test/playbooks/roles/cachingservers/meta state=directory
+  - name: Creating tasks directory
+    file: path=/home/test/playbooks/roles/cachingservers/tasks state=directory
+  - name: Creating templates directory
+    file: path=/home/test/playbooks/roles/cachingservers/templates state=directory
+  - name: Creating vars directory
+    file: path=/home/test/playbooks/roles/cachingservers/vars state=directory
+  - name: Creating Web Servers directory
+    file: path=/home/test/playbooks/roles/webservers state=directory
+  - name: Creating default directory
+    file: path=/home/test/playbooks/roles/webservers/defaults state=directory
+  - name: Creating files directory
+    file: path=/home/test/playbooks/roles/webservers/files state=directory
+  - name: Creating handlers directory
+    file: path=/home/test/playbooks/roles/webservers/handlers state=directory
+  - name: Creating meta directory
+    file: path=/home/test/playbooks/roles/webservers/meta state=directory
+  - name: Creating tasks directory
+    file: path=/home/test/playbooks/roles/webservers/tasks state=directory
+  - name: Creating templates directory
+    file: path=/home/test/playbooks/roles/webservers/templates state=directory
+  - name: Creating vars directory
+    file: path=/home/test/playbooks/roles/webservers/vars state=directory
+  - name: Creating Common directory
+    file: path=/home/test/playbooks/roles/common state=directory
+  - name: Creating default directory
+    file: path=/home/test/playbooks/roles/common/defaults state=directory
+  - name: Creating files directory
+    file: path=/home/test/playbooks/roles/common/files state=directory
+  - name: Creating handlers directory
+    file: path=/home/test/playbooks/roles/common/handlers state=directory
+  - name: Creating meta directory
+    file: path=/home/test/playbooks/roles/common/meta state=directory
+  - name: Creating tasks directory
+    file: path=/home/test/playbooks/roles/common/tasks state=directory
+  - name: Creating templates directory
+    file: path=/home/test/playbooks/roles/common/templates state=directory
+  - name: Creating vars directory
+    file: path=/home/test/playbooks/roles/common/vars state=directory

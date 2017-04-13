@@ -1,0 +1,16 @@
+---
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  tasks:
+  - name: Removing Tomcat
+    yum: pkg=tomcat state=absent
+  - name: Installing Tomcat
+    yum: pkg=tomcat state=installed
+  - name: Starting Tomcat server
+    service: name=tomcat state=restarted
+  - name: Waiting for port 8080 to listen
+    wait_for:
+     port: 8080
+     state: started

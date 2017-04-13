@@ -1,0 +1,18 @@
+---
+- hosts: all
+  user: test
+  sudo: yes
+  connection: ssh
+  tasks:
+  - name: Upgrading all Debian servers
+    yum: pkg=* state=latest
+    register: result
+    when: ansible_os_family == "RedHat"
+  - debug: var=result
+  - name: Upgrading all RedHat servers
+    apt: update_cache=yes
+    register: result
+    when: ansible_os_family == "Debianx"
+  - debug: var=result
+  - name: Updating Distro
+    apt: upgrade=dist

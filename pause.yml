@@ -1,0 +1,16 @@
+---
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  tasks:
+  - name: Installing Apache
+    yum: pkg=httpd state=installed
+  - name: Pausing 
+    pause:
+     prompt: 'Make sure the installation is complete'
+  - name: Pausing Again
+    pause:
+     seconds: 5
+  - name: Verify lync installing
+    yum: pkg=lynx state=present

@@ -1,0 +1,16 @@
+---
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  tasks:
+  - name: Getting file info
+    file: path=/home/test/playbooks/test.yml
+    register: result
+    delegate_to: 127.0.0.1
+  - debug: var=result
+  - name: Copying File
+    copy: src=/home/test/playbooks/test.yml dest=/home/test/playbooks/copy_test.yml
+    register: result
+    delegate_to: 127.0.0.1
+  - debug: var=result

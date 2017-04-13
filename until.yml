@@ -15,4 +15,4 @@
   - debug: var=result
   handlers:
   - name: Restart Web Server
-    action: service name=httpd state=restarted
+    service: name=httpd state=restarted

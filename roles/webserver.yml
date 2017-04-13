@@ -1,0 +1,13 @@
+--- # Master playbook for webservers
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  pre_tasks:
+  - name: Start time
+    raw: date > /home/test/start_of_role.log
+  roles:
+   - webservers
+  post_tasks:
+  - name: End Time
+    raw: date > /home/test/end_of_role.log

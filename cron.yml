@@ -1,0 +1,9 @@
+---
+- hosts: apacheweb
+  user: test
+  sudo: yes
+  connection: ssh
+  tasks:
+  - name: Add a cron job to test user
+    cron: name="list files" minute="15" hour="21" job="ls -al > /home/test/cronresult.log" 
+    delegate_to: 127.0.0.1
